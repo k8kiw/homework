@@ -103,13 +103,13 @@ bool Calculator::isLegal(char input[])
 						}
 					}
 
-					/*右括号错误*/
+					/*右括号错误,因为后面为数字*/
 					if (input[i] == ')')
 					{
 						return false;
 					}
 				}
-				else if (input[i] == '(')	//括号后紧接正负号的情况
+				else if (input[i] == '(')	//后面不是数字的情况
 				{
 					left++;
 					if (i == 0)
@@ -118,7 +118,8 @@ bool Calculator::isLegal(char input[])
 					}
 					else if (input[i - 1] == '+' || input[i - 1] == '-'\
 						|| input[i - 1] == '*' || input[i - 1] == '/'\
-						|| input[i - 1] == '^' || input[i - 1] == '%')
+						|| input[i - 1] == '^' || input[i - 1] == '%'\
+						|| input[i - 1] == '(')
 					{
 						continue;
 					}
@@ -130,7 +131,7 @@ bool Calculator::isLegal(char input[])
 				else if (input[i] == ')')
 				{
 					right++;
-					if (i != 0 && (input[i - 1] >= '0' && input[i - 1] <= '9' || input[i - 1] == ')') )
+					if (i != 0 && (input[i - 1] >= '0' && input[i - 1] <= '9' || input[i - 1] == ')' || input[i - 1] == '(') )
 					{
 						continue;
 					}
@@ -165,9 +166,19 @@ void Calculator::getstr1(char input[])
 void Calculator::trans()
 {
 	Operator x[N];
+
+	if (str1[0] == '-')
+		x[0].setch('0');
 	for (unsigned int i = 0; i <= strlen(str1); i++)
 	{
-		x[i].setch(str1[i]);
+		if (str1[0] == '-')
+		{
+			x[i + 1].setch(str1[i]);
+		}
+		else
+		{
+			x[i].setch(str1[i]);
+		}
 	}
 	linkStack<char> op;		//转后缀时存放运算符的栈
 
@@ -193,7 +204,7 @@ void Calculator::trans()
 	for (i = 0, j = 0; x[i].getch() != '\0'; i++)
 	{
 		//负号处理,在前加~
-		if (x[i].getch() == '-' && (i == 0 || x[i - 1].getch() == '('))
+		if (x[i].getch() == '-' &&  x[i - 1].getch() == '(')
 		{	
 			str2[j++] = '~';
 			continue;
