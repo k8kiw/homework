@@ -71,6 +71,7 @@
 ###### 		(1) 插入排序：
 
 ​	![img](<https://raw.githubusercontent.com/k8kiw/homework/master/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/test_img/3_1_1.png>)
+
 ​	此时文件内容为：
 
 ​	![img](https://raw.githubusercontent.com/k8kiw/homework/master/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/test_img/3_1_2.png)
@@ -78,7 +79,9 @@
 ###### 	(2) 归并排序：
 
 ​	![img](<https://raw.githubusercontent.com/k8kiw/homework/master/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/test_img/3_2_1.png>)
+
 ​	此时文件内容为：
+
 ​	![img](https://raw.githubusercontent.com/k8kiw/homework/master/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/test_img/3_2_2.png)
 
 ###### 	(3) 计数排序：
